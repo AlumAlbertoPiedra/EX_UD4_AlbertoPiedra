@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="pedido">
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="sucursal">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="direccion" type="xs:string"/>
+                        <xsd:element name="nombre" type="xs:string"/>
+                        <xsd:element name="fecha" type="xs:date"/>
+                        <xsd:element name="observaciones" type="xs:string"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="codigoSucursal" type="tipoCodigo">
+                </xsd:complexType>
+                <xsd:simpleType name="tipoCodigo">
+                    <xsd:restrisction base="xs:string">
+                        <xsd:pattern value=" [A-Za-z] ([A-Za-z0-9]) {7}"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="articulo">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="unidadesPedidas" type="xs:integer"/>
+                        <xsd:element name="precioUnidad" type="xs:decimal"/>
+                        <xsd:element name="observacionesArticulo" type="xs:string"/>
+                        <xsd:element name="revisionProductos" type="xs:integer" minoccurs="1"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="codigoArticulo" type="codigoTipo">
+                </xsd:complexType>
+                <xsd:simpleType name="codigoTipo">
+                    <xsd:restriction base="xs:string">
+                        <xsd:pattern value="[A-Z] {3}-[0,9] {3}"/>
+                    </xsd:restriction>
+                </xsd:simpleType>                
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:element>
+</xsd:schema>             
